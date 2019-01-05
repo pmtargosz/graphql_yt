@@ -4,7 +4,7 @@
   "description": "graphql - playground, training",
   "main": "index.js",
   "scripts": {
-    "server": "node src/index.js"
+    "server": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,8 @@
   "dependencies": {
     "apollo-server": "^2.3.1",
     "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }
