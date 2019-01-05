@@ -20,23 +20,11 @@ And also you have to local install redis server.
 
 ### Config
 
-Creat `config.js` file inside project root folder and add this code changing `<your_data>`:
-```js
-const config = {
-    PORT: process.env.PORT || 3000,
-    ENV: process.env.NODE_ENV || 'development',
-    PATH: '/graphql'
-}
-
-module.exports = config;
-```
-
-
 ### Run Dev Environment
 
 ```bash
 npm run server
-# http://localhost:3000/graphql
+# http://localhost:4000
 ```
 
 ## Resources
