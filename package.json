@@ -1,0 +1,28 @@
+{
+  "name": "graphql_yt",
+  "version": "0.0.1",
+  "description": "graphql - playground, training",
+  "main": "index.js",
+  "scripts": {
+    "server": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmtargosz/graphql_yt.git"
+  },
+  "keywords": [
+    "graphql",
+    "apollo",
+    "node"
+  ],
+  "author": "Pawel Targosz <pmtargosz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pmtargosz/graphql_yt/issues"
+  },
+  "homepage": "https://github.com/pmtargosz/graphql_yt#readme",
+  "dependencies": {
+    "apollo-server": "^2.3.1",
+    "graphql": "^14.0.2"
+  }
+}
