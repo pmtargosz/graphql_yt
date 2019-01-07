@@ -3,13 +3,14 @@ const { ApolloServer, gql}  = require('apollo-server');
 //1 create graphql schema 
 const typeDefs = gql`
     type Query {
-        hello: String!
+        hello(name: String): String!
         user: User
     }
 
     type User {
         id: ID!
         username: String!
+        firstLetterOfUsername: String!
     }
 
     type Error {
@@ -30,21 +31,32 @@ const typeDefs = gql`
 
     type Mutation {
         register(userInfo: UserInfo): RegisterResponse!
-        login(userInfo: UserInfo): Boolean!
+        login(userInfo: UserInfo): String!
     }
 `; 
 
 //2 resolvers
 const resolvers = {
+    User: {
+        firstLetterOfUsername: (parent) => parent.username[0]
+        // username: (parent) => {
+        //     console.log(parent)
+        //     return parent.username // 'I am username'
+        // }
+    }, 
     Query: {
-        hello: () => 'Hello Word!',
+        hello: (parent, {name}, context, info) => `Hello Word! - ${name}`,
         user: () => ({
             id: 1,
             username: 'Pawel'
         })
     },
     Mutation: {
-        login: () => true,
+        // args === userInfo: UserInfo
+        login: (parent, {userInfo: {username}}, context, info) => {
+            console.log(context)
+            return username
+        },
         register: () => ({
             errors: [
                 {
@@ -61,7 +73,7 @@ const resolvers = {
 }
 
 //3 create instance of apollo server
-const server = new ApolloServer({ typeDefs, resolvers })
+const server = new ApolloServer({ typeDefs, resolvers, context: (req, res) => ({req, res}) })
 
 //4 start server
 server.listen().then( ({url}) => console.log(`server started at ${url}`) )
